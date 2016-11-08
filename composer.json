@@ -1,0 +1,6 @@
+{
+    "name": "dan/learning-rabbitmq",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.6"
+    }
+}
