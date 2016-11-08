@@ -1,0 +1,9 @@
+Lesson 1
+--------
+Basic send and receive
+
+Instructions
+------------
+Create a queue item: php send.php
+
+Get the queue item: php receive.php

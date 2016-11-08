@@ -1,0 +1,14 @@
+Lesson 3
+--------
+Publish/subscribe. Demonstrates a message exchange; the producer (emit_log.php)
+always pushes messages to the exchange and not a defined queue. Each spawned
+worker (receive_logs.php) creates a temporary queue and binds it to the
+exchange.
+
+Instructions
+------------
+Create log entry: php emit_log.php "info: something happened"
+
+Print logs to screen: php receive_logs.php
+
+Save logs to file: php receive_logs.php > logs_from_rabbit.log

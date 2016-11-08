@@ -1,0 +1,14 @@
+Lesson 2
+--------
+Work queues. Spoofs a worker queue by sleeping for each dot in the message body.
+Also uses ackknowledgements to ensure messages persist if the worker dies. Uses
+load balancing QoS (quality of service) to send messages to the worker that is
+the least busy. Multiple workers can be spawned.
+
+Instructions
+------------
+Create a simple message: php new_task.php "A simple message."
+
+Create a complex message: php new_task.php "A complex message....."
+
+Spawn a worker (in a separate terminal): php worker.php
