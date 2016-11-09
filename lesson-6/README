@@ -1,0 +1,15 @@
+Lesson 6
+--------
+RPC. This demonstrates an RPC server and client system. This allows a client
+(or consumer) to create a set of messages in an RPC queue. The server (or
+producer) can consume this queue, running a callback function for each item.
+
+The result of the callback can then be passed into an temporary queue (bound by
+the client). The client then uses it's response callback function to consume the
+data from the temporary queue.
+
+Instructions
+------------
+Start the server: php rpc_server.php
+
+Start the client: php rpc_client.php
