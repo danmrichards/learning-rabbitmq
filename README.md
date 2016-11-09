@@ -1,6 +1,6 @@
 # Introduction
 This is a set of PHP solutions for the RabbitMQ tutorials provided at
-http://www.rabbitmq.com/tutorials
+http://www.rabbitmq.com/getstarted.html
 
 ## Setup
 You need a docker container for this stuff yo!
