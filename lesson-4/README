@@ -1,0 +1,17 @@
+Lesson 4
+--------
+Message routing. Demonstrates a direct message exchange; messages can are tagged
+with a routing/binding key. This allows consumers to handle the message in
+different ways based on the key value. The producer (emit_log_direct.php) now
+takes 2 arguments - severity and body. The consumer (receive_logs_direct.php)
+now takes multiple arguments for the requested severities.
+
+Instructions
+------------
+Create info log entry: php emit_log_direct.php info "Something happened"
+
+Create error log entry: php emit_log_direct.php error "Something happened"
+
+Print error logs to screen: php receive_logs_direct.php warning error
+
+Save info logs to file: php receive_logs_direct.php info > logs_from_rabbit.log
