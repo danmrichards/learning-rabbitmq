@@ -1,0 +1,27 @@
+Lesson 5
+--------
+Topics. Demonstrates a topic message exchange, messages sent to a topic exchange
+have a routing key (like direct) but the key must be de-limited with dots. For
+example "quick.orange.rabbit". The message consumer can subscribe to the
+exchange either with the matching binding key or using wildcards:
+
+* - Get all messsages including one or more words
+# - Get all messsages including zero or more words
+*.orange.* - Get all orange messages. Message must have 3 key elements.
+lazy.# - Get all messages starting with lazy. Message does not need more than 1
+         element.
+
+
+Instructions
+------------
+Create a critical kernel message: php emit_log_topic.php "kern.critical" "A critical kernel error"
+
+Create an info kernel message: php emit_log_topic.php "kern.info" "Kernel updated"
+
+Create a critical cron message: php emit_log_topic.php "cron.critical" "A critical cron error"
+
+Subscribe to all messages: php receive_logs_topic.php "#"
+
+Subscribe to all kernel messages: php receive_logs_topic.php "kern.*"
+
+Subscribe to all critical messages: php receive_logs_topic.php "*.critical"

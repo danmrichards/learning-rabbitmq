@@ -31,7 +31,7 @@ if (empty($data)) {
 // Create the message.
 $msg = new AMQPMessage($data);
 
-// Push the message to the queue.
+// Push the message to the exchange.
 $channel->basic_publish($msg, 'direct_logs', $severity);
 
 echo " [x] Sent ", $data, "\n";

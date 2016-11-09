@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Learning RabbitMQ - Log emitter.
+ * Learning RabbitMQ - Log emitter topic.
  */
 
 require_once __DIR__ . '../../vendor/autoload.php';
@@ -15,23 +15,26 @@ $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
 // Declare an exchange.
-$channel->exchange_declare('logs', 'fanout', false, false, false);
+$channel->exchange_declare('topic_logs', 'topic', false, false, false);
 
-// Get the message data from the cli argument.
-$data = implode(' ', array_slice($argv, 1));
+// Get the routing key from the first CLI argument.
+$routing_key = !empty($argv[1]) ? $argv[1] : 'anonymous.info';
+
+// Get the message data from the second CLI argument.
+$data = implode(' ', array_slice($argv, 2));
 
 // Fallback message.
 if (empty($data)) {
-    $data = "info: Hello World!";
+    $data = "Hello World!";
 }
 
 // Create the message.
 $msg = new AMQPMessage($data);
 
 // Push the message to the exchange.
-$channel->basic_publish($msg, 'logs');
+$channel->basic_publish($msg, 'topic_logs', $routing_key);
 
-echo " [x] Sent ", $data, "\n";
+echo " [x] Sent ",$routing_key,':',$data," \n";
 
 $channel->close();
 $connection->close();
